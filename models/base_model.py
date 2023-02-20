@@ -2,12 +2,11 @@
 """
 Base Class
 """
-
-
 import uuid
 import datetime
 
-class BaseModel():
+
+class BaseModel:
     """
     BaseModel class
     """
