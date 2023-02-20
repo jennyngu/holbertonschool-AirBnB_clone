@@ -11,13 +11,29 @@ class BaseModel():
     """
     BaseModel class
     """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Initialisation
         """
-        self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
+        created_obj = datetime.datetime.isoformat(self.created_at)
+        updated_obj = datetime.datetime.isoformat(self.updated_at)
+        if kwargs != {}:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    self.id = value
+                if key == 'created_at':
+                    created_obj = value
+                if key == 'updated_at':
+                    updated_obj = value
+                if key == 'my_number':
+                    self.my_number = value
+                if key == 'name':
+                    self.name = value
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
 
     def __str__(self):
         """
