@@ -26,6 +26,9 @@ class HBNBCommand(cmd.Cmd):
     def do_help(self, args):
         cmd.Cmd.do_help(self, args)
 
+    def emptyline(self):
+        pass
+
     def help_quit(self):
         print("Quits the console\n")
 
