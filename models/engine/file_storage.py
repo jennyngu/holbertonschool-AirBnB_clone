@@ -1,51 +1,35 @@
 #!/usr/bin/python3
 """
-Import BaseModel
+A class named FileStorage
+The class serialises instances to  JSON file and
+deserialises JSON files to instances
 """
-from models.base_model import BaseModel
 import json
+import os.path
 
 
 class FileStorage:
-    """
-    FlieStorage
-    """
-    def __init__(self, file_path=None, objects=None):
-        """
-        Initialization
-        """
-        path = FileStorage.__name__        
-        self.__file_path = f"./{path}.json"
-        self.__objects = {}
 
-    def all(slef):
+    __file_path = "file.json"
+    __objects = {}
+
+    def all(self):
         """
-        returns the dictionary __objects
+        Returns the dict of __objects
         """
         return self.__objects
 
     def new(self, obj):
-        """
-        sets in __objects the obj with key <obj class name>.id
-        """
-        self.__objects[f"{obj}"] = obj.id
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        self.__objects[key] = obj
 
     def save(self):
-        """
-        serializes __objects to the JSON file (path: __file_path)
-        """
-        filename = self.__name__ + ".json"
-        with open(filename, 'w') as f:
-            return json.dump(self.__object, f)
+        with open(self.__file_path, 'w', encoding="utf-8") as f:
+            for base_model in self.__objects.values():
+                json.dump(base_model.to_dict(), f)
 
     def reload(self):
-        """
-        deserializes the JSON file to __objects (only if the JSON file (__file_path)
-        exists ; otherwise, do nothing. If the file doesn’t exist, no exception should be raised)
-        """
-        path = f"./{self.__name__}.json"
-        if not os.path.exists(path):
+        if not os.path.exists(self.__file_path):
             return
-        with open (f"./{self.__name__}.json", 'r') as f:
-            x = json.reload(f.read())
-        return x
+        with open(self.__file_path, encoding="utf-8") as obj_from_json:
+            return(json.load(obj_from_json))
