@@ -17,16 +17,14 @@ class BaseModel:
         """
         self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
-        created_obj = datetime.datetime.isoformat(self.created_at)
-        updated_obj = datetime.datetime.isoformat(self.updated_at)
         if kwargs != {}:
             for key, value in kwargs.items():
                 if key == 'id':
                     self.id = value
                 if key == 'created_at':
-                    created_obj = value
+                    self.created_at = datetime.datetime.fromisoformat(value)
                 if key == 'updated_at':
-                    updated_obj = value
+                    self.updated_at = datetime.datetime.fromisoformat(value)
                 if key == 'my_number':
                     self.my_number = value
                 if key == 'name':
@@ -54,7 +52,7 @@ class BaseModel:
         returns a dictionary containing all keys/values of __dict__
         """
         self.updated_at = datetime.datetime.now()
-        inst_dict = self.__dict__
+        inst_dict = self.__dict__.copy()
         inst_dict["__class__"] = self.__class__.__name__
         inst_dict["updated_at"] = datetime.datetime.isoformat(self.updated_at)
         inst_dict["id"] = self.id
