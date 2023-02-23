@@ -6,6 +6,7 @@ deserialises JSON files to instances
 """
 import json
 import os.path
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -34,11 +35,9 @@ class FileStorage:
     def reload(self):
         if not os.path.exists(self.__file_path):
             return
-        """
         with open(self.__file_path, encoding="utf-8") as json_file:
             dict_of_base_models = json.load(json_file)
             for base_model_key in dict_of_base_models:
                 print(base_model_key)
                 print(dict_of_base_models[base_model_key])
                 print(BaseModel(dict_of_base_models[base_model_key]))
-        """
