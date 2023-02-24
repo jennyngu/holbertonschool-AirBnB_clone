@@ -21,13 +21,23 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         b = BaseModel()
         self.assertEqual(b.save(), None)
+        b.save()
+        self.assertIsNotNone(b.id)
 
     def test_to_dict(self):
         b = BaseModel()
         b.name = "First Model"
         b.my_number = 10
-        expected_dict = b.to_dict()
-        self.assertEqual(b.to_dict(), expected_dict)
+        b.save()
+        expected_dict = {
+            'id': b.id,
+            'name': 'First Model',
+            'my_number': 10,
+            'created_at': b.created_at.isoformat(),
+            'updated_at': b.updated_at.isoformat(),
+            '__class__': 'BaseModel'
+        }
+        self.assertDictEqual(b.to_dict(), expected_dict)
 
     def test_created_at(self):
         b = BaseModel()
