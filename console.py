@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
 
         if inst_key in all_obj:
             inst_str = all_obj[inst_key]
-            return
+            print(inst_str)
         else:
             print("** no instance found **")
 
@@ -101,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
         inst_key = split_args[0] + '.' + split_args[1]
 
         if inst_key in all_obj:
-            del all_objs[inst_key]
+            del all_obj[inst_key]
             models.storage.save()
             return
         else:
@@ -114,17 +114,18 @@ class HBNBCommand(cmd.Cmd):
         """
         split_args = args.split()
         all_obj = models.storage.all()
+        print(type(all_obj))
         all_obj_str = []
 
         if not args:
-            for obj in all_obj_str.values():
-                all_obj_str.append(str(obj))
+            for obj in all_obj:
+                all_obj_str.append(all_obj[obj].__str__())
             print(all_obj_str)
             return
         elif split_args[0] in self.class_list:
-            for obj in all_obj.values():
+            for obj in all_obj:
                 if type(obj).__name__ == args[0]:
-                    all_obj_str.append(str(obj))
+                    all_obj_str.append(all_obj[obj].__str__())
             print (all_obj_str)
         else:
             print("** class doesn't exist **")
