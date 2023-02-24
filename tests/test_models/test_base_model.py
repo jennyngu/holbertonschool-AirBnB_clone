@@ -20,9 +20,10 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         b = BaseModel()
-        self.assertEqual(b.save(), None)
+        before_save = b.updated_at
         b.save()
-        self.assertIsNotNone(b.id)
+        after_save = b.updated_at
+        self.assertNotEqual(before_save, after_save)
 
     def test_to_dict(self):
         b = BaseModel()
