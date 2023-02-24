@@ -7,9 +7,10 @@ deserialises JSON files to instances
 import json
 import os.path
 from models.base_model import BaseModel
+from models.user import User
 
 
-class FileStorage:
+class FileStorage():
 
     __file_path = "file.json"
     __objects = {}
@@ -32,9 +33,13 @@ class FileStorage:
         Serializes __objects to the JSON file
         """
         objects_dict = {}
-        for base_model_key in self.__objects:
-            objects_dict[base_model_key] = \
-                self.__objects[base_model_key].to_dict()
+        for key, obj in self.__objects.items():
+            if isinstance(obj, User):
+                obj_dict = obj.to_dict()
+                obj_dict['__class__'] = obj.__class__.__name__
+            else:
+                obj_dict = obj.to_dict()
+            objects_dict[key] = obj_dict
         with open(self.__file_path, 'w', encoding="utf-8") as f:
             json.dump(objects_dict, f)
 
@@ -48,5 +53,8 @@ class FileStorage:
             dict_obj = json.load(json_file)
             for key, value in dict_obj.items():
                 obj_class = value["__class__"]
-                obj_instance = eval(obj_class)(**value)
+                if obj_class == "User":
+                    obj_instance = User(**value)
+                else:
+                    obj_instance = eval(obj_class)(**value)
                 FileStorage.__objects[key] = obj_instance
