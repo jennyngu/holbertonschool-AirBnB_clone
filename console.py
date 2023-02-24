@@ -114,7 +114,6 @@ class HBNBCommand(cmd.Cmd):
         """
         split_args = args.split()
         all_obj = models.storage.all()
-        print(type(all_obj))
         all_obj_str = []
 
         if not args:
