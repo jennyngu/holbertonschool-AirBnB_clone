@@ -5,15 +5,15 @@ Program that is the entry point of the commmand interpreter
 import cmd
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
-"""
+import models
 from models.user import User
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-"""
-import models
+
+
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
             for obj in all_obj:
                 if type(obj).__name__ == args[0]:
                     all_obj_str.append(all_obj[obj].__str__())
-            print (all_obj_str)
+            print(all_obj_str)
         else:
             print("** class doesn't exist **")
 
@@ -159,7 +159,6 @@ class HBNBCommand(cmd.Cmd):
             return
         setattr(all_obj[inst_key], split_args[2], split_args[3])
         all_obj[inst_key].save()
-
 
     def emptyline(self):
         pass
