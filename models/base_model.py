@@ -4,6 +4,7 @@ Base Class
 """
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -14,47 +15,45 @@ class BaseModel:
         """
         Initialisation
         """
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
-        created_obj = datetime.datetime.isoformat(self.created_at)
-        updated_obj = datetime.datetime.isoformat(self.updated_at)
         if kwargs != {}:
             for key, value in kwargs.items():
                 if key == 'id':
                     self.id = value
-                if key == 'created_at':
-                    created_obj = value
-                if key == 'updated_at':
-                    updated_obj = value
-                if key == 'my_number':
+                elif key == 'created_at':
+                    self.created_at = datetime.datetime.fromisoformat(value)
+                elif key == 'updated_at':
+                    self.updated_at = datetime.datetime.fromisoformat(value)
+                elif key == 'my_number':
                     self.my_number = value
-                if key == 'name':
+                elif key == 'name':
                     self.name = value
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """
-        Print [<class name>] (<self.id>) <self.__dict__>
+        Print str format: [<class name>] (<self.id>) <self.__dict__>
         """
         return (f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
 
     def save(self):
         """
-        update the attribute updated_at with the current datetime
+        Updates the attribute updated_at with the current datetime
         """
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
-        returns a dictionary containing all keys/values of __dict__
+        Returns a dictionary containing all keys/values of __dict__
         """
-        self.updated_at = datetime.datetime.now()
-        inst_dict = self.__dict__
+        inst_dict = self.__dict__.copy()
         inst_dict["__class__"] = self.__class__.__name__
-        inst_dict["updated_at"] = datetime.datetime.isoformat(self.updated_at)
+        inst_dict["updated_at"] = self.updated_at.isoformat()
         inst_dict["id"] = self.id
-        inst_dict["created_at"] = datetime.datetime.isoformat(self.created_at)
+        inst_dict["created_at"] = self.created_at.isoformat()
 
         return inst_dict
