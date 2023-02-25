@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Unittest for BaseModel([...])
+Unittest for Amenity([...])
 """
 import unittest
 from models.amenity import Amenity
