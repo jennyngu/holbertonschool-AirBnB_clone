@@ -18,8 +18,6 @@ git clone https://github.com/JennyHolberton/holbertonschool-AirBnB_clone
 
 ## Usage
 
-How to Use
-
 To use the command interpreter, run the console.py script. This will start a prompt where you can enter commands to manage the objects in the AirBnB project.
 
 The following commands are available:
