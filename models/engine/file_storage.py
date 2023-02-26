@@ -8,7 +8,11 @@ import json
 import os.path
 from models.base_model import BaseModel
 from models.user import User
-
+from models.state import State
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 class FileStorage():
 
@@ -55,6 +59,16 @@ class FileStorage():
                 obj_class = value["__class__"]
                 if obj_class == "User":
                     obj_instance = User(**value)
+                elif obj_class == "Place":
+                    obj_instance = Place(**value)
+                elif obj_class == "State":
+                    obj_instance = State(**value)
+                elif obj_class == "City":
+                    obj_instance = City(**value)
+                elif obj_class == "Amenity":
+                    obj_instance = Amenity(**value)
+                elif obj_class == "Review":
+                    obj_instance = Review(**value)
                 else:
                     obj_instance = eval(obj_class)(**value)
                 FileStorage.__objects[key] = obj_instance
