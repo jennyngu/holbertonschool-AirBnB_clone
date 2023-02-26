@@ -26,6 +26,13 @@ class TestFileStorage(unittest.TestCase):
         f.save()
         self.assertTrue(os.path.exists("file.json"))
 
+    def setUp(self):
+        b = BaseModel()
+        b.save()
+
+    def tearDown(self):
+        os.remove("file.json")
+
     def test_reload(self):
         self.storage = FileStorage()
         self.storage.reload()
