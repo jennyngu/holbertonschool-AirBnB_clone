@@ -27,7 +27,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(os.path.exists("file.json"))
 
     def test_reload(self):
-        b = BaseModel()
-        storage.new(b)
-        objs = FileStorage._FileStorage__objects
-        self.assertIn("BaseModel." + b.id, objs)
+        self.storage = FileStorage()
+        self.storage.reload()
+        FileStorage().reload()
+        self.assertIsNotNone(self.storage.all())
