@@ -1,6 +1,3 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/Drixner/holbertonschool-AirBnB_clone)
-
-
 # AirBnB Clone - Command Interpreter
 
 
