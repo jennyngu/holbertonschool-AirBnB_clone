@@ -19,7 +19,7 @@ class HBNBCommand(cmd.Cmd):
     Class that creates the hbnb console
     """
     prompt = '(hbnb) '
-    class_list = ["BaseModel", "User", "State", "City", "Amenity", "Review"]
+    class_list = ["BaseModel", "User", "State", "City", "Amenity","Place", "Review"]
 
     def do_quit(self, args):
         """
