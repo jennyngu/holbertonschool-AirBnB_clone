@@ -1,8 +1,13 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/Drixner/holbertonschool-AirBnB_clone)
+
+
 # AirBnB Clone - Command Interpreter
 
 
-![Logo](https://s3.eu-west-3.amazonaws.com/hbtn.intranet/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MYA5JM5DUTZGMZG%2F20230226%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Date=20230226T063054Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=8141cf8ce976d90534a18fe484f1d5d9372f2177505f55d667e6f95e22fcd3dc
-)
+<p align="center">
+  <img src="https://i.imgur.com/WqHvIJs.png" alt="Hbton logo">
+</p>
+
 
 This is a command interpreter for managing objects in an AirBnB clone project. It is the first step in building a full web application and is designed to help with HTML/CSS templating, database storage, API, and front-end integration.
 
