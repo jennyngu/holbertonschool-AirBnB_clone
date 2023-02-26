@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             return
         elif split_args[0] in self.class_list:
             for obj in all_obj:
-                if type(obj).__name__ == args[0]:
+                if all_obj[obj].__class__.__name__ == split_args[0]:
                     all_obj_str.append(all_obj[obj].__str__())
             print(all_obj_str)
         else:
