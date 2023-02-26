@@ -45,13 +45,11 @@ class HBNBCommand(cmd.Cmd):
         if not split_args:
             print("** class name missing **")
             return
-
-        try:
-            newInst = globals()[split_args[0]]()
-        except NameError:
+        if split_args[0] not in self.class_list:
             print("** class doesn't exist **")
             return
 
+        newInst = globals()[split_args[0]]()
         newInst.save()
         print(newInst.id)
 
