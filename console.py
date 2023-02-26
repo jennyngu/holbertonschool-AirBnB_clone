@@ -39,7 +39,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """
-        Create a new instance of args[0] and prints the ID
+        Create a new instance and prints the ID
+        usage: create <class>
         """
         split_args = args.split()
 
@@ -57,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, args):
         """
         Print string representation of an instance
-        of class arg[0] with id arg[1]
+        usage: show <class> <ID>
         """
         split_args = args.split()
 
@@ -82,7 +83,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, args):
         """
-        deletes an instance of args[0] class with args[1] id
+        deletes an instance
+        usage: destroy <class> <ID>
         """
         split_args = args.split()
         if not split_args:
@@ -108,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, args):
         """
         prints a string representation of all classes
-        if args[0] exists, limits the output to only args[0] class
+        if an argument is passed, limits the output to only the specified class
         """
         split_args = args.split()
         all_obj = models.storage.all()
@@ -129,8 +131,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, args):
         """
-        update an instance of args[0] class and args[1] id
-        modifies or adds args[2] attribute to arg[3] value
+        update an instance of a class to modify or add an attribute
+        usage: update <class> <ID> <attribute> <value>
         """
         split_args = args.split()
         if not split_args:
