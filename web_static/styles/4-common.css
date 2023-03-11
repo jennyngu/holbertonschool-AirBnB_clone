@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    flex-direction: column;
+}

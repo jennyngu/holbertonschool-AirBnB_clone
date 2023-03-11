@@ -1,0 +1,40 @@
+.places {
+    background-color: white;
+    height: auto;
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.places h1 {
+    font-size: 30px;   
+    margin-bottom: 400px;
+    margin-left: 15px;
+}
+
+article h2 {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+    font-size: 30px;
+    text-align: center;
+    margin-left: -70px;
+    display: inline-block;
+    margin-right: 80px;
+}
+
+.places article h2:nth-child(1) {
+    align-items: right;
+}
+
+.places article h2:nth-child(2) {
+    align-items: left;
+}
+
+.places article h2:nth-child(3) {
+    align-items: center;
+    margin-left: 150px;
+}
