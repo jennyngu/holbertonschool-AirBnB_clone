@@ -19,9 +19,7 @@
     top: -30px;
 }
 
-.places article > div:nth-child(1),
-.places article > div:nth-child(2),
-.places article > div:nth-child(3) {
+.places article > div {
     width: 360px;
     height: 300px;
     padding: 20px;
@@ -42,7 +40,8 @@
 
 .places article > div:nth-child(2) {
     position: relative;
-    left: 70px
+    left: 70px;
+    bottom: -22px;
 }
 
 .places article > div:nth-child(3) {
@@ -134,4 +133,3 @@
     margin-top: 15px;
     margin-bottom: 5px;
 }
-
